@@ -1,9 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Transition } from "@headlessui/react";
-import { Fragment } from "react";
 import { useTimeoutFn } from "react-use";
 
-function GameBoard({
+interface GameBoardProps {
+  matchesLeft: number;
+  matchesPlayer1: number;
+  matchesPlayer2: number;
+  handleTakeMatches: (numMatches: number) => void;
+  isShowing: boolean;
+  player2Turn: number;
+  handleRestart: () => void;
+}
+
+const GameBoard: React.FC<GameBoardProps> = ({
   matchesLeft,
   matchesPlayer1,
   matchesPlayer2,
@@ -11,7 +20,7 @@ function GameBoard({
   isShowing,
   player2Turn,
   handleRestart,
-}) {
+}) => {
   return (
     <div>
       <div className="flex flex-col mx-auto items-center h-[700px] w-[1200px] bg-slate-300/80 rounded-3xl mt-10">
@@ -104,6 +113,6 @@ function GameBoard({
       </div>
     </div>
   );
-}
+};
 
 export default GameBoard;

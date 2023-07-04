@@ -11,17 +11,17 @@ import {
   determineWinner,
 } from "../helpers/gameLogic";
 
-function Game() {
-  const [matchesLeft, setMatchesLeft] = useState(25);
-  const [player, setPlayer] = useState(1);
-  const [matchesPlayer1, setMatchesPlayer1] = useState(0);
-  const [matchesPlayer2, setMatchesPlayer2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(0);
-  const [player2Turn, setPlayer2Turn] = useState(0);
-  const [winner, setWinner] = useState("");
-  const [isShowing, setIsShowing] = useState(true);
+const Game: React.FC = () => {
+  const [matchesLeft, setMatchesLeft] = useState<number>(25);
+  const [player, setPlayer] = useState<number>(1);
+  const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
+  const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
+  const [player1Turn, setPlayer1Turn] = useState<number>(0);
+  const [player2Turn, setPlayer2Turn] = useState<number>(0);
+  const [winner, setWinner] = useState<string>("");
+  const [isShowing, setIsShowing] = useState<boolean>(true);
   const [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -34,7 +34,10 @@ function Game() {
   useEffect(() => {
     if (matchesLeft === 0) {
       // Game over
-      const gameWinner = determineWinner(matchesPlayer1, matchesPlayer2);
+      const gameWinner: string = determineWinner(
+        matchesPlayer1,
+        matchesPlayer2
+      );
       if (gameWinner === "player-1") {
         console.log("Player 1 wins!");
         setWinner(gameWinner);
@@ -46,7 +49,7 @@ function Game() {
       }
     } else if (player === 2) {
       // AI's turn
-      const count = determineOptimalMove(matchesLeft, player1Turn);
+      const count: number = determineOptimalMove(matchesLeft, player1Turn);
       setIsShowing(false);
       resetIsShowing();
       takeMatches(
@@ -62,7 +65,7 @@ function Game() {
     }
   }, [matchesLeft, player]);
 
-  const handleTakeMatches = (count) => {
+  const handleTakeMatches = (count: number) => {
     if (matchesLeft > 0 && player === 1) {
       takeMatches(
         count,
@@ -91,7 +94,7 @@ function Game() {
     <div className="bg-blue-950 text-white">
       <Header />
       <div className="flex justify-center">
-        {winner === "player-1" && <Confetti width={1400} height={800} />}
+        {winner === "player-1" && <Confetti width={1250} height={800} />}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
       <GameBoard
@@ -111,6 +114,6 @@ function Game() {
       )}
     </div>
   );
-}
+};
 
 export default Game;
