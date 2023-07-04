@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 
 function LossModal({ isOpen, closeModal }) {
   return (
-    <>
+    <div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -59,7 +59,7 @@ function LossModal({ isOpen, closeModal }) {
           </div>
         </Dialog>
       </Transition>
-    </>
+    </div>
   );
 }
 
