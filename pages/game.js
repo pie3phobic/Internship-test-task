@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useTimeoutFn } from "react-use";
+import Confetti from "react-confetti";
 
 function Game() {
   const [matchesLeft, setMatchesLeft] = useState(25);
@@ -12,6 +13,7 @@ function Game() {
   const [matchesPlayer2, setMatchesPlayer2] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(0); // Track the current turn of Player 1
   const [player2Turn, setPlayer2Turn] = useState(0);
+  const [winner, setWinner] = useState("");
   let [isShowing, setIsShowing] = useState(true);
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
   useEffect(() => {
@@ -19,8 +21,10 @@ function Game() {
       // Game over
       if (matchesPlayer1 % 2 === 0) {
         console.log("Player 1 wins!");
+        setWinner("player-1");
       } else if (matchesPlayer2 % 2 === 0) {
         console.log("Player 2 wins!");
+        setWinner("player-2");
       } else {
         console.log("It's a tie!");
       }
@@ -73,11 +77,13 @@ function Game() {
     setMatchesPlayer2(0);
     setPlayer1Turn(0);
     setPlayer2Turn(0);
+    setWinner("player-0");
   };
   return (
     <div className="bg-blue-950 text-white">
       <Header />
       <div className="flex justify-center">
+        {winner === "player-1" && <Confetti width={1400} height={800} />}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
       <div>
@@ -87,49 +93,42 @@ function Game() {
               Matches Left: {matchesLeft}
             </p>
           </div>
-          <div className="flex justify-between w-[700px] pt-8">
-            <div className="flex flex-col">
-              <a className="text-2xl font-semibold">
+          <div className="flex justify-between gap-20 items-center pt-8">
+            <div className="flex flex-col items-center">
+              <a className="text-2xl font-semibold mb-6">
                 Player 1's matches: {matchesPlayer1}
               </a>
-            </div>
-            <a className="text-2xl font-semibold">
-              Player 2's matches: {matchesPlayer2}
-            </a>
-          </div>
-          <div className="flex w-[1200px] justify-center">
-            {matchesLeft > 0 && (
-              <div className="mt-20">
-                {player === 1 && (
-                  <div className="flex gap-10 bg-slate-400 rounded-3xl px-10 py-32">
-                    <div
-                      className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
-                      onClick={() => handleTakeMatches(1)}
-                    >
-                      <img src="1-match-stick.png" className="w-[50px]" />
-                    </div>
-                    <div
-                      className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
-                      onClick={() => handleTakeMatches(2)}
-                    >
-                      <img src="2-match-stick.png" className="w-[70px]" />
-                    </div>
-                    <div
-                      className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
-                      onClick={() => handleTakeMatches(3)}
-                    >
-                      <img
-                        src="3-match-stick.png"
-                        className="w-[90px] h-[120px] py-2"
-                      />
-                    </div>
+              <div className="">
+                <div className="flex gap-4 bg-slate-400 w-[500px] rounded-3xl px-10 py-32">
+                  <div
+                    className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
+                    onClick={() => handleTakeMatches(1)}
+                  >
+                    <img src="1-match-stick.png" className="w-[50px]" />
                   </div>
-                )}
+                  <div
+                    className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
+                    onClick={() => handleTakeMatches(2)}
+                  >
+                    <img src="2-match-stick.png" className="w-[70px]" />
+                  </div>
+                  <div
+                    className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
+                    onClick={() => handleTakeMatches(3)}
+                  >
+                    <img
+                      src="3-match-stick.png"
+                      className="w-[90px] h-[120px] py-2"
+                    />
+                  </div>
+                </div>
               </div>
-            )}
-            <div>
-              {/* <p>Hellooo</p> */}
-              <div className="flex flex-col items-center mt-20 rounded-3xl bg-slate-400 px-10 py-32">
+            </div>
+            <div className="flex flex-col items-center">
+              <a className="text-2xl font-semibold mb-6">
+                Player 2's matches: {matchesPlayer2}
+              </a>
+              <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 px-10 py-32">
                 <div className="h-32 w-32">
                   <Transition
                     as={Fragment}
@@ -152,9 +151,8 @@ function Game() {
               </div>
             </div>
           </div>
-          {/* <button onClick={handleRestart}>Restart</button> */}
           <button
-            className="backface-visibility-hidden mt-8 flex transform items-center rounded-full bg-black bg-opacity-20 px-3 py-2 text-sm font-medium text-white transition hover:scale-105 hover:bg-opacity-30 focus:outline-none active:bg-opacity-40"
+            className="backface-visibility-hidden mt-8 flex transform items-center rounded-full bg-purple-accent bg-opacity-40 px-3 py-2 text-sm font-medium text-white transition hover:scale-105 hover:bg-opacity-30 focus:outline-none active:bg-opacity-40"
             onClick={handleRestart}
           >
             <svg viewBox="0 0 20 20" fill="none" className="h-5 w-5 opacity-70">
