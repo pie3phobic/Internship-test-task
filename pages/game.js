@@ -5,26 +5,37 @@ import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useTimeoutFn } from "react-use";
 import Confetti from "react-confetti";
+import VictoryModal from "../components/VictoryModal";
+import LossModal from "../components/LossModal";
 
 function Game() {
   const [matchesLeft, setMatchesLeft] = useState(25);
   const [player, setPlayer] = useState(1);
   const [matchesPlayer1, setMatchesPlayer1] = useState(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(0); // Track the current turn of Player 1
+  const [player1Turn, setPlayer1Turn] = useState(0);
   const [player2Turn, setPlayer2Turn] = useState(0);
   const [winner, setWinner] = useState("");
   let [isShowing, setIsShowing] = useState(true);
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
+  let [isOpen, setIsOpen] = useState(false);
+  function closeModal() {
+    setIsOpen(false);
+  }
+  function openModal() {
+    setIsOpen(true);
+  }
   useEffect(() => {
     if (matchesLeft === 0) {
       // Game over
       if (matchesPlayer1 % 2 === 0) {
         console.log("Player 1 wins!");
         setWinner("player-1");
+        openModal();
       } else if (matchesPlayer2 % 2 === 0) {
         console.log("Player 2 wins!");
         setWinner("player-2");
+        openModal();
       } else {
         console.log("It's a tie!");
       }
@@ -96,7 +107,7 @@ function Game() {
           <div className="flex justify-between gap-20 items-center pt-8">
             <div className="flex flex-col items-center">
               <a className="text-2xl font-semibold mb-6">
-                Player 1's matches: {matchesPlayer1}
+                Your matches: {matchesPlayer1}
               </a>
               <div className="">
                 <div className="flex gap-4 bg-slate-400 w-[500px] rounded-3xl px-10 py-32">
@@ -126,7 +137,7 @@ function Game() {
             </div>
             <div className="flex flex-col items-center">
               <a className="text-2xl font-semibold mb-6">
-                Player 2's matches: {matchesPlayer2}
+                Bot's matches: {matchesPlayer2}
               </a>
               <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 px-10 py-32">
                 <div className="h-32 w-32">
@@ -165,6 +176,12 @@ function Game() {
 
             <span className="ml-3">Restart</span>
           </button>
+          {winner === "player-1" && (
+            <VictoryModal isOpen={isOpen} closeModal={closeModal} />
+          )}
+          {winner === "player-2" && (
+            <LossModal isOpen={isOpen} closeModal={closeModal} />
+          )}
         </div>
       </div>
     </div>
