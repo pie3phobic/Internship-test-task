@@ -25,23 +25,59 @@ After clicking upon any button, the page with selected game mode will load up:
 and then the page will load up with the correct settings that we're specified by the user:
 ![gameland-omega vercel app_ (4)](https://github.com/pie3phobic/Internship-test-task/assets/115817261/af3e2c21-8aaf-4e48-89b1-c46fa4e14342)
 
-Thank you <3
-
 ## Completed tasks:
+1. Used a framework;
+2. Created a user interface for an app;
+3. AI makes decisions based on an optimal strategy (not just picking a random number of matches);
+4. Wrote project with TypeScript and React;
+5. Used React Hooks;
+## Completed Bonus tasks:
+1. Added an alternative game mode where the first move is made by AI. The user can select the game mode;
+2. Implement a third Custom Game mode with the general solution where there are `2n + 1` matches in the pile and the number of matches allowed to take in each turn is from 1 to `m`. The user can adjust the parameters `n` and `m` in the modal window.
+
+## AI Logic:
+- The optimal strategy that AI follows for the classic mode when player goes first:
+AI removes matches based on what the player does, ensuring that 4 matches are removed from the game each round.
+If player takes 1 match, AI will take 3 matches.
+If player takes 2 matches, AI will take 2 matches.
+If player take 3 matches, AI will take 1 match.
+As long as a total of 4 matches are removed each round, the opponent will always be left with the last match.
+If there are less than 5 matches left AI will decide how much to take based on if the amount of matches it has is even or odd and the amount of matches left.
+- The optimal strategy that AI follows for the alternative mode when it goes first:
+AI will always take 2 matches since it's the most benefiting starting position and then it will follow the logic that is described above, making sure that 4 matches are removed on each round.
+- Strategy for the custom game mode:(Nim-sum strategy)
+It calculates the Nim-sum using the XOR operator (^) on the number of matches and the number of matches taken by player. Then, it applies the strategy based on the value of the Nim-sum.
+If the Nim-sum is 0, indicating a losing position, the code selects a random move between 1 and m. If the Nim-sum is non-zero, it proceeds with further calculations. It finds the highest set bit in the Nim-sum using the logarithm and bitwise shifting operations. The value of the highest bit is determined as 1 << highestBit. The code calculates the reduced number of matches by subtracting the highest bit value from the total number of matches.
+If the reduced number of matches is less than or equal to 0, the code takes the minimum between the original number of matches and m. Otherwise, it takes the minimum between the reduced number of matches and m.
 
 **Image credits: Freepic
 
+## Results with witty responces from the AI :D
+Victory:
+![localhost_3000_game](https://github.com/pie3phobic/Internship-test-task/assets/115817261/4131150f-c3b6-4afe-ad9d-9ca0ef7a7f78)
+Loss:
+![localhost_3000_game (1)](https://github.com/pie3phobic/Internship-test-task/assets/115817261/56ba0703-471f-4bc7-bd43-1118d889e09c)
+
+Thank you <3
+
 ## Опис:
-Цей проєкт створено з використанням Next.JS, TailwindCSS та декількома плагінами для стилізації невеликих деталей. Дані з API отримуємо за допомогою функції Next.JS під назвою getServerSideProps (рендеринг на стороні сервера).
+Цей проєкт створено з використанням фреймворку для React.JS - Next.JS, TailwindCSS і плагіна HeadlessUI для стилізації деяких компонент інтерфейсу користувача.
+На головний сторінці сайту є 3 кнопки, які відповідають за 3 різні режими гри:
+1. Гравець йде першим;
+2. Альтернативний режим гри - ШІ йде першим;
+3. Спеціальний режим гри - користувач вводить значення `m` і `n` у модальному вікні. У стопці є «2n + 1» сірників, а кількість сірників, дозволених для кожного ходу, становить від 1 до «m». Для цього прикладу максимально дозволене значення `m` становить 9.
 
 Дякую! <3
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-
 ## Getting Started
 
-First, run the development server:
+```
+npm i
+````
+
+Run the development server:
 
 ```bash
 npm run dev
