@@ -27,7 +27,7 @@ const CustomGameBoard: React.FC<CustomGameBoardProps> = ({
               Your matches: {matchesPlayer1}
             </a>
             <div className="">
-              <div className="grid gap-6 grid-cols-3 bg-slate-400 w-[500px] rounded-3xl px-10 py-20">
+              <div className="grid gap-6 grid-cols-3 bg-purple-accent/40 w-[500px] rounded-3xl px-10 py-20">
                 {Array.from({ length: m }).map((_, index) => (
                   <div
                     key={index}
@@ -47,7 +47,7 @@ const CustomGameBoard: React.FC<CustomGameBoardProps> = ({
             <a className="text-2xl font-semibold mb-6">
               Bot&apos;s matches: {matchesPlayer2}
             </a>
-            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 flex-1 px-10 justify-center">
+            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-purple-accent/40 flex-1 px-10 justify-center">
               <div className="h-32 w-32">
                 <Transition
                   as={Fragment}

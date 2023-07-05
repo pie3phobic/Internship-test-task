@@ -25,7 +25,7 @@ const AlternativeGameBoard: React.FC<GameBoardProps> = ({
             <a className="text-2xl font-semibold mb-6">
               Bot&apos;s matches: {matchesPlayer2}
             </a>
-            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-purple-accent/80 px-10 py-32">
+            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-purple-accent/40 px-10 py-32">
               <div className="h-32 w-32">
                 <Transition
                   as={Fragment}
@@ -52,7 +52,7 @@ const AlternativeGameBoard: React.FC<GameBoardProps> = ({
               Your matches: {matchesPlayer1}
             </a>
             <div className="">
-              <div className="flex gap-4 bg-purple-accent/80 w-[500px] rounded-3xl px-10 py-32">
+              <div className="flex gap-4 bg-purple-accent/40 w-[500px] rounded-3xl px-10 py-32">
                 <div
                   className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
                   onClick={() => handleTakeMatches(1)}

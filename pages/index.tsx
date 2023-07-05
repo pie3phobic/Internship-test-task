@@ -42,7 +42,7 @@ export default function Home() {
             <p className="text-4xl font-semibold text-white">Matches Game</p>
             <FireIcon className="text-purple-accent h-10" />
           </div>
-          <p className="text-white w-[600px] font-light">
+          <p className="text-white w-[570px] font-light">
             Two people are playing a game. From the pile of 25 matches, each
             player takes either 1, 2 or 3 matches on each turn. The game is over
             once all matches are taken. Whoever has the even amount of matches
@@ -50,19 +50,19 @@ export default function Home() {
           </p>
           <div className="flex flex-col gap-6">
             <button
-              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl mt-[100px] hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-lg bg-purple-accent px-6 py-2 rounded-3xl mt-[60px] hover:scale-105 transform transition duration-200 ease-out w-[250px]"
               onClick={openGame}
             >
               Play Now! →
             </button>
             <button
-              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-lg bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[250px]"
               onClick={openALternativeGame}
             >
               Alternative mode
             </button>
             <button
-              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-lg bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[250px]"
               onClick={openModal}
             >
               Custom mode
@@ -70,12 +70,13 @@ export default function Home() {
           </div>
           <CustomModeModal isOpen={isOpen} closeModal={closeModal} />
         </div>
-        <img
-          src="match-game.png"
-          className="w-[450px] rounded-3xl mt-16 mb-20"
-        />
+        <div className="mr-10">
+          <div className="bg-purple-accent/90 rounded-3xl p-9 my-16 mx-10 mb-32">
+            <img src="match-game.png" className="w-[400px] rounded-3xl" />
+          </div>
+        </div>
       </div>
-      <div className="bg-dark-gray">
+      <div className="bg-dark-gray pt-6">
         <p className="text-white font-semibold pl-32 pt-8">Other games:</p>
         <div className="flex justify-center gap-16 mt-6 pb-8">
           <GameCard
@@ -95,7 +96,7 @@ export default function Home() {
           />
           <GameCard
             src={"other-games-5.png"}
-            name={"Block"}
+            name={"Block Pop"}
             author={"Gameland"}
           />
         </div>

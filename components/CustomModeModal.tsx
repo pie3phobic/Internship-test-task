@@ -50,7 +50,7 @@ const CustomModeModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                 <Dialog.Panel className="w-[600px] h-[300px] max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-3xl text-emerald-600 pb-2 font-medium leading-6"
+                    className="text-3xl text-purple-accent pb-2 font-medium leading-6"
                     id="dialog-title"
                   >
                     🔧Settings
@@ -68,6 +68,7 @@ const CustomModeModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                         type="number"
                         value={nInputValue}
                         onChange={handleNChange}
+                        className="outline-purple-accent/60 text-gray-600 pl-3 text-lg"
                       />
                       <label
                         htmlFor="mInput"
@@ -80,6 +81,9 @@ const CustomModeModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                         type="number"
                         value={mInputValue}
                         onChange={handleMChange}
+                        min="1"
+                        max="9"
+                        className="outline-purple-accent/60 text-gray-600 pl-3 text-lg"
                       />
                     </div>
                   </div>
@@ -87,7 +91,7 @@ const CustomModeModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-emerald-200 px-4 py-2 text-xl font-medium text-black hover:bg-emerald-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-purple-accent/60 px-4 py-2 text-xl font-medium text-black hover:bg-purple-accent/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-accent focus-visible:ring-offset-2"
                       onClick={openCustomGame}
                     >
                       Play
