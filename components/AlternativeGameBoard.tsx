@@ -23,7 +23,7 @@ const AlternativeGameBoard: React.FC<GameBoardProps> = ({
         <div className="flex justify-between gap-20 items-center pt-8">
           <div className="flex flex-col items-center">
             <a className="text-2xl font-semibold mb-6">
-              Bot's matches: {matchesPlayer2}
+              Bot&apos;s matches: {matchesPlayer2}
             </a>
             <div className="flex flex-col items-center rounded-3xl w-[500px] bg-purple-accent/80 px-10 py-32">
               <div className="h-32 w-32">

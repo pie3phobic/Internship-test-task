@@ -45,7 +45,7 @@ const CustomGameBoard: React.FC<CustomGameBoardProps> = ({
           </div>
           <div className="flex flex-col items-center">
             <a className="text-2xl font-semibold mb-6">
-              Bot's matches: {matchesPlayer2}
+              Bot&apos;s matches: {matchesPlayer2}
             </a>
             <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 flex-1 px-10 justify-center">
               <div className="h-32 w-32">
