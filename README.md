@@ -58,6 +58,8 @@ Victory:
 Loss:
 ![localhost_3000_game (1)](https://github.com/pie3phobic/Internship-test-task/assets/115817261/56ba0703-471f-4bc7-bd43-1118d889e09c)
 
+This project can be potentially improved because there are still a few areas where further abstraction can be applied to enhance the single responsibility principle and to reduce code coupling.
+
 Thank you <3
 
 ## Опис:
