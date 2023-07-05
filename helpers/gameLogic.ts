@@ -1,19 +1,3 @@
-// export const determineOptimalMove = (
-//   matches: number,
-//   player1Turn: number
-// ): number => {
-//   let count: number;
-
-//   if (player1Turn === 1) {
-//     count = 3;
-//   } else if (player1Turn === 2) {
-//     count = 2;
-//   } else {
-//     count = 1;
-//   }
-
-//   return count;
-// };
 export const determineOptimalMove = (
   matches: number,
   matchesPlayer2: number,
@@ -49,31 +33,46 @@ export const determineOptimalMove = (
   return count;
 };
 
-// export const determineOptimalMove = (
-//   matches: number,
-//   matchesPlayer2: number,
-//   player1Turn: number
-// ): number => {
-//   let count: number;
+export const determineOptimalMoveCustom = (
+  matches: number,
+  matchesPlayer2: number,
+  player1Turn: number,
+  m: number,
+  n: number
+): number => {
+  let count: number;
 
-//   if (matches <= 5) {
-//     if (matchesPlayer2 % 2 === 0) {
-//       count = matches <= 2 ? matches : 2;
-//     } else {
-//       count = matches % 2 === 0 ? 1 : matches;
-//     }
-//   } else {
-//     if (player1Turn === 1) {
-//       count = 3;
-//     } else if (player1Turn === 2) {
-//       count = 2;
-//     } else {
-//       count = 1;
-//     }
-//   }
+  if (matches === 2 * n + 1) {
+    // Follow the 2n + 1 matches strategy
+    if (player1Turn === 1) {
+      count = m;
+    } else if (player1Turn === m) {
+      count = 1;
+    } else {
+      count = 2;
+    }
+  } else {
+    // Implement nim-sum strategy
+    const nimSum = matches ^ matchesPlayer2;
 
-//   return count;
-// };
+    if (nimSum === 0) {
+      // Random move when nim-sum is zero
+      count = Math.floor(Math.random() * m) + 1;
+    } else {
+      const highestBit = Math.floor(Math.log2(nimSum));
+      const highestBitValue = 1 << highestBit;
+      const reducedMatches = matches - highestBitValue;
+
+      if (reducedMatches <= 0) {
+        count = Math.min(matches, m);
+      } else {
+        count = Math.min(reducedMatches, m);
+      }
+    }
+  }
+
+  return count;
+};
 
 export const takeMatches = (
   count: number,

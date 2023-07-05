@@ -11,3 +11,7 @@ export interface GameBoardProps {
   player2Turn: number;
   handleRestart: () => void;
 }
+export interface CustomGameBoardProps extends GameBoardProps {
+  m: number;
+  n: number;
+}

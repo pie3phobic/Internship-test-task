@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useRouter } from "next/router";
 import Header from "../components/Header";
 import { useTimeoutFn } from "react-use";
 import Confetti from "react-confetti";
 import VictoryModal from "../components/VictoryModal";
 import LossModal from "../components/LossModal";
-import AlternativeGameBoard from "../components/AlternativeGameBoard";
+import CustomGameBoard from "../components/CustomGameBoard";
 import {
-  determineOptimalMove,
+  determineOptimalMoveCustom,
   takeMatches,
   determineWinner,
 } from "../helpers/gameLogic";
-
-const AlternativeGame: React.FC = () => {
-  const [matchesLeft, setMatchesLeft] = useState<number>(25);
-  const [player, setPlayer] = useState<number>(2); // AI goes first
+import { useState, useEffect } from "react";
+import { markAsUntransferable } from "worker_threads";
+function Custom() {
+  const router = useRouter();
+  const { n } = router.query;
+  const { m } = router.query;
+  const [matchesLeft, setMatchesLeft] = useState(2 * Number(n) + 1);
+  const [player, setPlayer] = useState<number>(1); // AI goes first
   const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
   const [player1Turn, setPlayer1Turn] = useState<number>(0);
@@ -63,10 +68,12 @@ const AlternativeGame: React.FC = () => {
         );
       } else {
         // Regular move for AI
-        const count: number = determineOptimalMove(
+        const count: number = determineOptimalMoveCustom(
           matchesLeft,
           matchesPlayer2,
-          player1Turn
+          player1Turn,
+          Number(m),
+          Number(n)
         );
         setIsShowing(false);
         resetIsShowing();
@@ -100,15 +107,14 @@ const AlternativeGame: React.FC = () => {
   };
 
   const handleRestart = () => {
-    setMatchesLeft(25);
-    setPlayer(2);
+    setMatchesLeft(2 * Number(n) + 1);
+    setPlayer(1);
     setMatchesPlayer1(0);
     setMatchesPlayer2(0);
     setPlayer1Turn(0);
     setPlayer2Turn(0);
     setWinner("");
   };
-
   return (
     <div className="bg-blue-950 text-white">
       <Header />
@@ -116,7 +122,7 @@ const AlternativeGame: React.FC = () => {
         {winner === "player-1" && <Confetti width={1250} height={800} />}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
-      <AlternativeGameBoard
+      <CustomGameBoard
         matchesLeft={matchesLeft}
         matchesPlayer1={matchesPlayer1}
         matchesPlayer2={matchesPlayer2}
@@ -124,6 +130,8 @@ const AlternativeGame: React.FC = () => {
         handleTakeMatches={handleTakeMatches}
         isShowing={isShowing}
         handleRestart={handleRestart}
+        m={Number(m)}
+        n={Number(n)}
       />
       {winner === "player-1" && (
         <VictoryModal isOpen={isOpen} closeModal={closeModal} />
@@ -133,6 +141,6 @@ const AlternativeGame: React.FC = () => {
       )}
     </div>
   );
-};
+}
 
-export default AlternativeGame;
+export default Custom;

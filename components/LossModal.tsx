@@ -39,7 +39,7 @@ const LossModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-2xl text-gray-500 pb-2">
-                      Don`t be sad, it's not everyday that you get a chance to
+                      Don't be sad, it's not everyday that you get a chance to
                       play with AI this advanced, human!🦾
                     </p>
                   </div>

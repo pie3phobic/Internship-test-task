@@ -7,6 +7,7 @@ import { FireIcon } from "@heroicons/react/solid";
 import { useState, useEffect } from "react";
 import React from "react";
 import GameCard from "../components/GameCard";
+import CustomModeModal from "../components/CustomModeModal";
 
 export default function Home() {
   const router = useRouter();
@@ -19,6 +20,13 @@ export default function Home() {
     router.push({
       pathname: "/alternative",
     });
+  };
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const openModal = () => {
+    setIsOpen(true);
   };
   return (
     <div className="bg-blue-950">
@@ -53,7 +61,14 @@ export default function Home() {
             >
               Alternative mode
             </button>
+            <button
+              className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              onClick={openModal}
+            >
+              Custom mode
+            </button>
           </div>
+          <CustomModeModal isOpen={isOpen} closeModal={closeModal} />
         </div>
         <img
           src="match-game.png"
