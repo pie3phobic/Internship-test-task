@@ -1,19 +1,79 @@
+// export const determineOptimalMove = (
+//   matches: number,
+//   player1Turn: number
+// ): number => {
+//   let count: number;
+
+//   if (player1Turn === 1) {
+//     count = 3;
+//   } else if (player1Turn === 2) {
+//     count = 2;
+//   } else {
+//     count = 1;
+//   }
+
+//   return count;
+// };
 export const determineOptimalMove = (
   matches: number,
+  matchesPlayer2: number,
   player1Turn: number
 ): number => {
   let count: number;
 
-  if (player1Turn === 1) {
-    count = 3;
-  } else if (player1Turn === 2) {
-    count = 2;
+  if (matches <= 5) {
+    //count = matchesPlayer2 % 2 === 0 ? 1 : matches;
+    if (matchesPlayer2 % 2 === 0 && matches >= 2) {
+      count = 2;
+    } else if (matchesPlayer2 % 2 === 1 && matches === 4) {
+      count = 3;
+    } else if (matchesPlayer2 % 2 === 1 && matches === 3) {
+      count = 3;
+    } else if (matchesPlayer2 % 2 === 1 && matches === 5) {
+      count = 3;
+    } else if (matchesPlayer2 % 2 === 1 && matches === 2) {
+      count = 1;
+    } else if (matchesPlayer2 % 2 === 1 && matches === 1) {
+      count = 1;
+    } else count = matches;
   } else {
-    count = 1;
+    if (player1Turn === 1) {
+      count = 3;
+    } else if (player1Turn === 2) {
+      count = 2;
+    } else {
+      count = 1;
+    }
   }
 
   return count;
 };
+
+// export const determineOptimalMove = (
+//   matches: number,
+//   matchesPlayer2: number,
+//   player1Turn: number
+// ): number => {
+//   let count: number;
+
+//   if (matches <= 5) {
+//     if (matchesPlayer2 % 2 === 0) {
+//       count = matches <= 2 ? matches : 2;
+//     } else {
+//       count = matches % 2 === 0 ? 1 : matches;
+//     }
+//   } else {
+//     if (player1Turn === 1) {
+//       count = 3;
+//     } else if (player1Turn === 2) {
+//       count = 2;
+//     } else {
+//       count = 1;
+//     }
+//   }
+
+//   return count;
+// };
 
 export const takeMatches = (
   count: number,

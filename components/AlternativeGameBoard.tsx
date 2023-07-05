@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Transition } from "@headlessui/react";
 import { useTimeoutFn } from "react-use";
 import { GameBoardProps } from "../helpers/types";
-const GameBoard: React.FC<GameBoardProps> = ({
+const AlternativeGameBoard: React.FC<GameBoardProps> = ({
   matchesLeft,
   matchesPlayer1,
   matchesPlayer2,
@@ -20,6 +20,32 @@ const GameBoard: React.FC<GameBoardProps> = ({
           </p>
         </div>
         <div className="flex justify-between gap-20 items-center pt-8">
+          <div className="flex flex-col items-center">
+            <a className="text-2xl font-semibold mb-6">
+              Bot's matches: {matchesPlayer2}
+            </a>
+            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 px-10 py-32">
+              <div className="h-32 w-32">
+                <Transition
+                  as={Fragment}
+                  show={isShowing}
+                  enter="transform block transition duration-[400ms]"
+                  enterFrom="opacity-100 rotate-[-120deg] scale-50"
+                  enterTo="opacity-100 rotate-0 scale-100"
+                  leaveFrom="opacity-0 rotate-0 scale-100 "
+                  leaveTo="opacity-0 scale-95 "
+                >
+                  <div className="h-full w-full rounded-md bg-white shadow-lg flex justify-center align-middle">
+                    <img
+                      src={`${player2Turn}-match-stick.png`}
+                      className="rounded-md"
+                      alt={`${player2Turn} match stick`}
+                    />
+                  </div>
+                </Transition>
+              </div>
+            </div>
+          </div>
           <div className="flex flex-col items-center">
             <a className="text-2xl font-semibold mb-6">
               Your matches: {matchesPlayer1}
@@ -59,32 +85,6 @@ const GameBoard: React.FC<GameBoardProps> = ({
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center">
-            <a className="text-2xl font-semibold mb-6">
-              Bot's matches: {matchesPlayer2}
-            </a>
-            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-slate-400 px-10 py-32">
-              <div className="h-32 w-32">
-                <Transition
-                  as={Fragment}
-                  show={isShowing}
-                  enter="transform block transition duration-[400ms]"
-                  enterFrom="opacity-100 rotate-[-120deg] scale-50"
-                  enterTo="opacity-100 rotate-0 scale-100"
-                  leaveFrom="opacity-0 rotate-0 scale-100 "
-                  leaveTo="opacity-0 scale-95 "
-                >
-                  <div className="h-full w-full rounded-md bg-white shadow-lg flex justify-center align-middle">
-                    <img
-                      src={`${player2Turn}-match-stick.png`}
-                      className="rounded-md"
-                      alt={`${player2Turn} match stick`}
-                    />
-                  </div>
-                </Transition>
-              </div>
-            </div>
-          </div>
         </div>
         <button
           className="backface-visibility-hidden mt-8 flex transform items-center rounded-full bg-purple-accent bg-opacity-40 px-3 py-2 text-sm font-medium text-white transition hover:scale-105 hover:bg-opacity-30 focus:outline-none active:bg-opacity-40"
@@ -105,4 +105,4 @@ const GameBoard: React.FC<GameBoardProps> = ({
   );
 };
 
-export default GameBoard;
+export default AlternativeGameBoard;

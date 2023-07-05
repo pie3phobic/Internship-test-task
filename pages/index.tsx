@@ -15,6 +15,11 @@ export default function Home() {
       pathname: "/game",
     });
   };
+  const openALternativeGame = () => {
+    router.push({
+      pathname: "/alternative",
+    });
+  };
   return (
     <div className="bg-blue-950">
       <Head>
@@ -42,7 +47,10 @@ export default function Home() {
             >
               Play Now! →
             </button>
-            <button className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]">
+            <button
+              className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              onClick={openALternativeGame}
+            >
               Alternative mode
             </button>
           </div>
