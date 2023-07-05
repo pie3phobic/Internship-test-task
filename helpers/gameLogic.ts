@@ -6,7 +6,6 @@ export const determineOptimalMove = (
   let count: number;
 
   if (matches <= 5) {
-    //count = matchesPlayer2 % 2 === 0 ? 1 : matches;
     if (matchesPlayer2 % 2 === 0 && matches >= 2) {
       count = 2;
     } else if (matchesPlayer2 % 2 === 1 && matches === 4) {
@@ -36,38 +35,22 @@ export const determineOptimalMove = (
 export const determineOptimalMoveCustom = (
   matches: number,
   matchesPlayer2: number,
-  player1Turn: number,
-  m: number,
-  n: number
+  m: number
 ): number => {
   let count: number;
+  const nimSum = matches ^ matchesPlayer2;
 
-  if (matches === 2 * n + 1) {
-    // Follow the 2n + 1 matches strategy
-    if (player1Turn === 1) {
-      count = m;
-    } else if (player1Turn === m) {
-      count = 1;
-    } else {
-      count = 2;
-    }
+  if (nimSum === 0) {
+    count = Math.floor(Math.random() * m) + 1;
   } else {
-    // Implement nim-sum strategy
-    const nimSum = matches ^ matchesPlayer2;
+    const highestBit = Math.floor(Math.log2(nimSum));
+    const highestBitValue = 1 << highestBit;
+    const reducedMatches = matches - highestBitValue;
 
-    if (nimSum === 0) {
-      // Random move when nim-sum is zero
-      count = Math.floor(Math.random() * m) + 1;
+    if (reducedMatches <= 0) {
+      count = Math.min(matches, m);
     } else {
-      const highestBit = Math.floor(Math.log2(nimSum));
-      const highestBitValue = 1 << highestBit;
-      const reducedMatches = matches - highestBitValue;
-
-      if (reducedMatches <= 0) {
-        count = Math.min(matches, m);
-      } else {
-        count = Math.min(reducedMatches, m);
-      }
+      count = Math.min(reducedMatches, m);
     }
   }
 

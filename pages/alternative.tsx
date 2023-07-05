@@ -33,7 +33,6 @@ const AlternativeGame: React.FC = () => {
 
   useEffect(() => {
     if (matchesLeft === 0) {
-      // Game over
       const gameWinner: string = determineWinner(
         matchesPlayer1,
         matchesPlayer2
@@ -48,9 +47,7 @@ const AlternativeGame: React.FC = () => {
         openModal();
       }
     } else if (player === 2) {
-      // AI's turn
       if (player2Turn === 0) {
-        // First move for AI
         takeMatches(
           2,
           player,
@@ -62,7 +59,6 @@ const AlternativeGame: React.FC = () => {
           setPlayer
         );
       } else {
-        // Regular move for AI
         const count: number = determineOptimalMove(
           matchesLeft,
           matchesPlayer2,

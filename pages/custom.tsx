@@ -12,13 +12,12 @@ import {
   determineWinner,
 } from "../helpers/gameLogic";
 import { useState, useEffect } from "react";
-import { markAsUntransferable } from "worker_threads";
 function Custom() {
   const router = useRouter();
   const { n } = router.query;
   const { m } = router.query;
   const [matchesLeft, setMatchesLeft] = useState(2 * Number(n) + 1);
-  const [player, setPlayer] = useState<number>(1); // AI goes first
+  const [player, setPlayer] = useState<number>(1);
   const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
   const [player1Turn, setPlayer1Turn] = useState<number>(0);
@@ -38,7 +37,6 @@ function Custom() {
 
   useEffect(() => {
     if (matchesLeft === 0) {
-      // Game over
       const gameWinner: string = determineWinner(
         matchesPlayer1,
         matchesPlayer2
@@ -53,9 +51,7 @@ function Custom() {
         openModal();
       }
     } else if (player === 2) {
-      // AI's turn
       if (player2Turn === 0) {
-        // First move for AI
         takeMatches(
           2,
           player,
@@ -67,13 +63,10 @@ function Custom() {
           setPlayer
         );
       } else {
-        // Regular move for AI
         const count: number = determineOptimalMoveCustom(
           matchesLeft,
           matchesPlayer2,
-          player1Turn,
-          Number(m),
-          Number(n)
+          Number(m)
         );
         setIsShowing(false);
         resetIsShowing();

@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
 import Header from "../components/Header";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import { FireIcon } from "@heroicons/react/solid";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 import GameCard from "../components/GameCard";
 import CustomModeModal from "../components/CustomModeModal";

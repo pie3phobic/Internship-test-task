@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Transition } from "@headlessui/react";
-import { useTimeoutFn } from "react-use";
 import { GameBoardProps } from "../helpers/types";
 import RestartButton from "./RestartButton";
 const AlternativeGameBoard: React.FC<GameBoardProps> = ({

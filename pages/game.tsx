@@ -33,7 +33,6 @@ const Game: React.FC = () => {
 
   useEffect(() => {
     if (matchesLeft === 0) {
-      // Game over
       const gameWinner: string = determineWinner(
         matchesPlayer1,
         matchesPlayer2
@@ -48,7 +47,6 @@ const Game: React.FC = () => {
         openModal();
       }
     } else if (player === 2) {
-      // AI's turn
       const count: number = determineOptimalMove(
         matchesLeft,
         matchesPlayer2,
