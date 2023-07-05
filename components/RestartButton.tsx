@@ -1,6 +1,10 @@
 import React from "react";
 
-function RestartButton({handleRestart}) {
+interface RestartButtonProps {
+  handleRestart: () => void;
+}
+
+const RestartButton: React.FC<RestartButtonProps> = ({ handleRestart }) => {
   return (
     <button
       className="backface-visibility-hidden mt-8 flex transform items-center rounded-full bg-purple-accent bg-opacity-40 px-5 py-2 text-sm font-medium text-white transition hover:scale-105 hover:bg-opacity-30 focus:outline-none active:bg-opacity-40 mb-6"
@@ -17,6 +21,7 @@ function RestartButton({handleRestart}) {
       <span className="ml-3 text-2xl">Restart</span>
     </button>
   );
-}
+};
 
 export default RestartButton;
+

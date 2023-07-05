@@ -15,3 +15,8 @@ export interface CustomGameBoardProps extends GameBoardProps {
   m: number;
   n: number;
 }
+export interface GameCardProps {
+  src: string;
+  name: string;
+  author: string;
+}
