@@ -50,19 +50,19 @@ export default function Home() {
           </p>
           <div className="flex flex-col gap-6">
             <button
-              className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl mt-[120px] hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl mt-[100px] hover:scale-105 transform transition duration-200 ease-out w-[280px]"
               onClick={openGame}
             >
               Play Now! →
             </button>
             <button
-              className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
               onClick={openALternativeGame}
             >
               Alternative mode
             </button>
             <button
-              className="text-white font-semibold text text-2xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
+              className="text-white font-semibold text text-xl bg-purple-accent px-6 py-2 rounded-3xl hover:scale-105 transform transition duration-200 ease-out w-[280px]"
               onClick={openModal}
             >
               Custom mode
@@ -78,10 +78,26 @@ export default function Home() {
       <div className="bg-dark-gray">
         <p className="text-white font-semibold pl-32 pt-8">Other games:</p>
         <div className="flex justify-center gap-16 mt-6 pb-8">
-          <GameCard />
-          <GameCard />
-          <GameCard />
-          <GameCard />
+          <GameCard
+            src={"other-games-1.png"}
+            name={"Word Mania"}
+            author={"Gameland"}
+          />
+          <GameCard
+            src={"other-games-2.png"}
+            name={"Power Pong"}
+            author={"Gameland"}
+          />
+          <GameCard
+            src={"other-games-4.png"}
+            name={"Chess"}
+            author={"Gameland"}
+          />
+          <GameCard
+            src={"other-games-5.png"}
+            name={"Block"}
+            author={"Gameland"}
+          />
         </div>
         <div className="flex justify-end mr-10 gap-6 pb-4">
           <img src="google-play.png" className="w-[160px]" />
