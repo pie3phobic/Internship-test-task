@@ -1,7 +1,7 @@
 
-# This is my case project created for 
+# This is my project created for Stormotion Internship Test Task
 
-# Demo:
+# Demo: https://gameland-omega.vercel.app
 
 
 ### Description [ Також опис українською доступний внизу :)  ] ->
