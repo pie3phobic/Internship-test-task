@@ -39,8 +39,8 @@ const LossModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-2xl text-gray-500 pb-2">
-                      Don't be sad, it's not everyday that you get a chance to
-                      play with AI this advanced, human!🦾
+                      Don&apos;t be sad, it&apos;s not everyday that you get a
+                      chance to play with AI this advanced, human!🦾
                     </p>
                   </div>
 
@@ -50,7 +50,7 @@ const LossModal: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                       className="inline-flex justify-center rounded-md border border-transparent bg-red-200 px-4 py-2 text-xl font-medium text-black hover:bg-red-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
-                      I won't give up!
+                      I won&apos;t give up!
                     </button>
                   </div>
                 </Dialog.Panel>
