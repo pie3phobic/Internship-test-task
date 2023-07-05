@@ -13,7 +13,7 @@ import {
 
 const AlternativeGame: React.FC = () => {
   const [matchesLeft, setMatchesLeft] = useState<number>(25);
-  const [player, setPlayer] = useState<number>(2); // AI goes first
+  const [player, setPlayer] = useState<number>(2);
   const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
   const [player1Turn, setPlayer1Turn] = useState<number>(0);

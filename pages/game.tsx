@@ -10,18 +10,27 @@ import {
   takeMatches,
   determineWinner,
 } from "../helpers/gameLogic";
-
+import { useGameState } from "../helpers/gameState";
 const Game: React.FC = () => {
-  const [matchesLeft, setMatchesLeft] = useState<number>(25);
-  const [player, setPlayer] = useState<number>(1);
-  const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
-  const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
-  const [player1Turn, setPlayer1Turn] = useState<number>(0);
-  const [player2Turn, setPlayer2Turn] = useState<number>(0);
-  const [winner, setWinner] = useState<string>("");
   const [isShowing, setIsShowing] = useState<boolean>(true);
   const [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {
+    matchesLeft,
+    setMatchesLeft,
+    player,
+    setPlayer,
+    matchesPlayer1,
+    setMatchesPlayer1,
+    matchesPlayer2,
+    setMatchesPlayer2,
+    player1Turn,
+    setPlayer1Turn,
+    player2Turn,
+    setPlayer2Turn,
+    winner,
+    setWinner,
+  } = useGameState();
 
   const closeModal = () => {
     setIsOpen(false);
@@ -38,11 +47,9 @@ const Game: React.FC = () => {
         matchesPlayer2
       );
       if (gameWinner === "player-1") {
-        console.log("Player 1 wins!");
         setWinner(gameWinner);
         openModal();
       } else if (gameWinner === "player-2") {
-        console.log("Player 2 wins!");
         setWinner(gameWinner);
         openModal();
       }
