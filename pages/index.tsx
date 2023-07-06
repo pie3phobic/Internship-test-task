@@ -35,13 +35,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="flex gap-[75px]">
-        <div className="flex flex-col ml-20 mt-20">
+      <div className="flex flex-col md:flex-row gap-[75px]">
+        <div className="flex flex-col pl-14 md:pl-20 mt-20">
           <div className="flex mb-10">
             <p className="text-4xl font-semibold text-white">Matches Game</p>
             <FireIcon className="text-purple-accent h-10" />
           </div>
-          <p className="text-white w-[570px] font-light">
+          <p className="text-white w-[300px] md:w-[570px] font-light">
             Two people are playing a game. From the pile of 25 matches, each
             player takes either 1, 2 or 3 matches on each turn. The game is over
             once all matches are taken. Whoever has the even amount of matches
@@ -70,14 +70,14 @@ export default function Home() {
           <CustomModeModal isOpen={isOpen} closeModal={closeModal} />
         </div>
         <div className="mr-10">
-          <div className="bg-purple-accent/90 rounded-3xl p-9 my-16 mx-10 mb-32">
+          <div className="bg-purple-accent/90 rounded-3xl hidden md:block p-9 my-16 mx-10 mb-32">
             <img src="match-game.png" className="w-[400px] rounded-3xl" />
           </div>
         </div>
       </div>
       <div className="bg-dark-gray pt-6">
         <p className="text-white font-semibold pl-32 pt-8">Other games:</p>
-        <div className="flex justify-center gap-16 mt-6 pb-8">
+        <div className="flex flex-col md:flex-row justify-center ml-24 mb-6 md:ml-0 md:mb-0 gap-16 mt-6 pb-8">
           <GameCard
             src={"other-games-1.png"}
             name={"Word Mania"}

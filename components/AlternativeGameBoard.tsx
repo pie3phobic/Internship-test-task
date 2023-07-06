@@ -13,18 +13,18 @@ const AlternativeGameBoard: React.FC<GameBoardProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex flex-col mx-auto items-center h-[700px] w-[1200px] bg-slate-300/80 rounded-3xl mt-10">
+      <div className="flex flex-col mx-auto items-center w-full h-full md:h-[700px] md:w-[1200px] bg-slate-300/80 rounded-3xl mt-10">
         <div>
           <p className="text-3xl font-semibold pt-8">
             Matches Left: {matchesLeft}
           </p>
         </div>
-        <div className="flex justify-between gap-20 items-center pt-8">
+        <div className="flex flex-col md:flex-row justify-between gap-20 items-center pt-8">
           <div className="flex flex-col items-center">
             <a className="text-2xl font-semibold mb-6">
               Bot&apos;s matches: {matchesPlayer2}
             </a>
-            <div className="flex flex-col items-center rounded-3xl w-[500px] bg-purple-accent/40 px-10 py-32">
+            <div className="flex flex-col items-center rounded-3xl w-[300px] md:w-[500px] bg-purple-accent/40 px-10 py-32">
               <div className="h-32 w-32">
                 <Transition
                   as={Fragment}
@@ -51,9 +51,9 @@ const AlternativeGameBoard: React.FC<GameBoardProps> = ({
               Your matches: {matchesPlayer1}
             </a>
             <div className="">
-              <div className="flex gap-4 bg-purple-accent/40 w-[500px] rounded-3xl px-10 py-32">
+              <div className="flex flex-col items-center md:flex-row gap-4 bg-purple-accent/40 w-[350px] md:w-[500px] rounded-3xl px-10 py-16 md:py-32">
                 <div
-                  className="w-32 h-32 flex justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
+                  className="w-32 h-32 flex flex-col md:flex-row items-center justify-center align-middle rounded-md bg-white shadow-lg hover:cursor-pointer hover:scale-105 transform transition duration-200 ease-out"
                   onClick={() => handleTakeMatches(1)}
                 >
                   <img

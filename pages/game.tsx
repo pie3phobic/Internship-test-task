@@ -11,6 +11,7 @@ import {
   determineWinner,
 } from "../helpers/gameLogic";
 import { useGameState } from "../helpers/gameState";
+import useWindowSize from "react-use/lib/useWindowSize";
 const Game: React.FC = () => {
   const [isShowing, setIsShowing] = useState<boolean>(true);
   const [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
@@ -98,12 +99,14 @@ const Game: React.FC = () => {
     setPlayer2Turn(0);
     setWinner("");
   };
-
+  const { width, height } = useWindowSize();
   return (
     <div className="bg-blue-950 text-white">
       <Header />
       <div className="flex justify-center">
-        {winner === "player-1" && <Confetti width={1250} height={800} />}
+        {winner === "player-1" && (
+          <Confetti width={width - 50} height={height} />
+        )}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
       <GameBoard
