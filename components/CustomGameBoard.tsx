@@ -14,13 +14,13 @@ const CustomGameBoard: React.FC<CustomGameBoardProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex flex-col mx-auto items-center w-[1200px] bg-slate-300/80 rounded-3xl mt-10">
+      <div className="flex flex-col mx-auto items-center w-full md:w-[1200px] bg-slate-300/80 rounded-3xl mt-10">
         <div>
           <p className="text-3xl font-semibold pt-8">
             Matches Left: {matchesLeft}
           </p>
         </div>
-        <div className="flex justify-between gap-20 pt-8">
+        <div className="flex flex-col md:flex-row justify-between gap-20 pt-8">
           <div className="flex flex-col items-center">
             <a className="text-2xl font-semibold mb-6">
               Your matches: {matchesPlayer1}

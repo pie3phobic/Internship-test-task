@@ -12,6 +12,7 @@ import {
   determineWinner,
 } from "../helpers/gameLogic";
 import { useState, useEffect } from "react";
+import useWindowSize from "react-use/lib/useWindowSize";
 function Custom() {
   const router = useRouter();
   const { n } = router.query;
@@ -42,11 +43,9 @@ function Custom() {
         matchesPlayer2
       );
       if (gameWinner === "player-1") {
-        console.log("Player 1 wins!");
         setWinner(gameWinner);
         openModal();
       } else if (gameWinner === "player-2") {
-        console.log("Player 2 wins!");
         setWinner(gameWinner);
         openModal();
       }
@@ -108,11 +107,14 @@ function Custom() {
     setPlayer2Turn(0);
     setWinner("");
   };
+  const { width, height } = useWindowSize();
   return (
     <div className="bg-blue-950 text-white">
       <Header />
       <div className="flex justify-center">
-        {winner === "player-1" && <Confetti width={1250} height={800} />}
+        {winner === "player-1" && (
+          <Confetti width={width - 50} height={height} />
+        )}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
       <CustomGameBoard

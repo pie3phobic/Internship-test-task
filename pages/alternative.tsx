@@ -39,11 +39,9 @@ const AlternativeGame: React.FC = () => {
         matchesPlayer2
       );
       if (gameWinner === "player-1") {
-        console.log("Player 1 wins!");
         setWinner(gameWinner);
         openModal();
       } else if (gameWinner === "player-2") {
-        console.log("Player 2 wins!");
         setWinner(gameWinner);
         openModal();
       }
@@ -105,14 +103,12 @@ const AlternativeGame: React.FC = () => {
     setPlayer2Turn(0);
     setWinner("");
   };
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   return (
     <div className="bg-blue-950 text-white">
       <Header />
       <div className="flex justify-center">
-        {winner === "player-1" && (
-          <Confetti width={width - 50} height={height} />
-        )}
+        {winner === "player-1" && <Confetti width={width - 50} height={800} />}
         <h1 className="text-4xl font-semibold">Matches Game</h1>
       </div>
       <AlternativeGameBoard
