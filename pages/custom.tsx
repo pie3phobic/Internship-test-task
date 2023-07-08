@@ -17,10 +17,10 @@ function Custom() {
   const router = useRouter();
   const { n } = router.query;
   const { m } = router.query;
-  const [matchesLeft, setMatchesLeft] = useState(2 * Number(n) + 1);
   const [player, setPlayer] = useState<number>(1);
   const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
+  const matchesLeft = 2 * Number(n) + 1 - matchesPlayer1 - matchesPlayer2;
   const [player1Turn, setPlayer1Turn] = useState<number>(0);
   const [player2Turn, setPlayer2Turn] = useState<number>(0);
   const [winner, setWinner] = useState<string>("");
@@ -54,7 +54,6 @@ function Custom() {
         takeMatches(
           2,
           player,
-          setMatchesLeft,
           setMatchesPlayer1,
           setMatchesPlayer2,
           setPlayer1Turn,
@@ -72,7 +71,6 @@ function Custom() {
         takeMatches(
           count,
           player,
-          setMatchesLeft,
           setMatchesPlayer1,
           setMatchesPlayer2,
           setPlayer1Turn,
@@ -88,7 +86,6 @@ function Custom() {
       takeMatches(
         count,
         player,
-        setMatchesLeft,
         setMatchesPlayer1,
         setMatchesPlayer2,
         setPlayer1Turn,
@@ -99,7 +96,6 @@ function Custom() {
   };
 
   const handleRestart = () => {
-    setMatchesLeft(2 * Number(n) + 1);
     setPlayer(1);
     setMatchesPlayer1(0);
     setMatchesPlayer2(0);

@@ -13,10 +13,10 @@ import {
 import useWindowSize from "react-use/lib/useWindowSize";
 
 const AlternativeGame: React.FC = () => {
-  const [matchesLeft, setMatchesLeft] = useState<number>(25);
   const [player, setPlayer] = useState<number>(2);
   const [matchesPlayer1, setMatchesPlayer1] = useState<number>(0);
   const [matchesPlayer2, setMatchesPlayer2] = useState<number>(0);
+  const matchesLeft = 25 - matchesPlayer1 - matchesPlayer2;
   const [player1Turn, setPlayer1Turn] = useState<number>(0);
   const [player2Turn, setPlayer2Turn] = useState<number>(0);
   const [winner, setWinner] = useState<string>("");
@@ -48,9 +48,8 @@ const AlternativeGame: React.FC = () => {
     } else if (player === 2) {
       if (player2Turn === 0) {
         takeMatches(
-          2,
+          1,
           player,
-          setMatchesLeft,
           setMatchesPlayer1,
           setMatchesPlayer2,
           setPlayer1Turn,
@@ -60,15 +59,13 @@ const AlternativeGame: React.FC = () => {
       } else {
         const count: number = determineOptimalMove(
           matchesLeft,
-          matchesPlayer2,
-          player1Turn
+          matchesPlayer2
         );
         setIsShowing(false);
         resetIsShowing();
         takeMatches(
           count,
           player,
-          setMatchesLeft,
           setMatchesPlayer1,
           setMatchesPlayer2,
           setPlayer1Turn,
@@ -84,7 +81,6 @@ const AlternativeGame: React.FC = () => {
       takeMatches(
         count,
         player,
-        setMatchesLeft,
         setMatchesPlayer1,
         setMatchesPlayer2,
         setPlayer1Turn,
@@ -95,7 +91,6 @@ const AlternativeGame: React.FC = () => {
   };
 
   const handleRestart = () => {
-    setMatchesLeft(25);
     setPlayer(2);
     setMatchesPlayer1(0);
     setMatchesPlayer2(0);

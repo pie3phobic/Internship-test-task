@@ -18,7 +18,6 @@ const Game: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     matchesLeft,
-    setMatchesLeft,
     player,
     setPlayer,
     matchesPlayer1,
@@ -55,17 +54,12 @@ const Game: React.FC = () => {
         openModal();
       }
     } else if (player === 2) {
-      const count: number = determineOptimalMove(
-        matchesLeft,
-        matchesPlayer2,
-        player1Turn
-      );
+      const count: number = determineOptimalMove(matchesLeft, matchesPlayer2);
       setIsShowing(false);
       resetIsShowing();
       takeMatches(
         count,
         player,
-        setMatchesLeft,
         setMatchesPlayer1,
         setMatchesPlayer2,
         setPlayer1Turn,
@@ -80,7 +74,6 @@ const Game: React.FC = () => {
       takeMatches(
         count,
         player,
-        setMatchesLeft,
         setMatchesPlayer1,
         setMatchesPlayer2,
         setPlayer1Turn,
@@ -91,7 +84,6 @@ const Game: React.FC = () => {
   };
 
   const handleRestart = () => {
-    setMatchesLeft(25);
     setPlayer(1);
     setMatchesPlayer1(0);
     setMatchesPlayer2(0);

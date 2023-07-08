@@ -1,35 +1,20 @@
 export const determineOptimalMove = (
   matches: number,
-  matchesPlayer2: number,
-  player1Turn: number
+  matchesPlayer2: number
 ): number => {
-  let count: number;
-
-  if (matches <= 5) {
-    if (matchesPlayer2 % 2 === 0 && matches >= 2) {
-      count = 2;
-    } else if (matchesPlayer2 % 2 === 1 && matches === 4) {
-      count = 3;
-    } else if (matchesPlayer2 % 2 === 1 && matches === 3) {
-      count = 3;
-    } else if (matchesPlayer2 % 2 === 1 && matches === 5) {
-      count = 3;
-    } else if (matchesPlayer2 % 2 === 1 && matches === 2) {
-      count = 1;
-    } else if (matchesPlayer2 % 2 === 1 && matches === 1) {
-      count = 1;
-    } else count = matches;
+  if (matches === 1) {
+    return 1;
+  } else if (matches === 2 && matchesPlayer2 % 2 === 0) {
+    return 2;
+  } else if (matches === 2 && matchesPlayer2 % 2 === 1) {
+    return 1;
+  } else if (matches % 4 === 0) {
+    return 3;
+  } else if (matches % 4 === 1) {
+    return 1;
   } else {
-    if (player1Turn === 1) {
-      count = 3;
-    } else if (player1Turn === 2) {
-      count = 2;
-    } else {
-      count = 1;
-    }
+    return 3;
   }
-
-  return count;
 };
 
 export const determineOptimalMoveCustom = (
@@ -60,15 +45,12 @@ export const determineOptimalMoveCustom = (
 export const takeMatches = (
   count: number,
   player: number,
-  setMatchesLeft: React.Dispatch<React.SetStateAction<number>>,
   setMatchesPlayer1: React.Dispatch<React.SetStateAction<number>>,
   setMatchesPlayer2: React.Dispatch<React.SetStateAction<number>>,
   setPlayer1Turn: React.Dispatch<React.SetStateAction<number>>,
   setPlayer2Turn: React.Dispatch<React.SetStateAction<number>>,
   setPlayer: React.Dispatch<React.SetStateAction<number>>
 ): void => {
-  setMatchesLeft((prevMatchesLeft: number) => prevMatchesLeft - count);
-
   if (player === 1) {
     setMatchesPlayer1(
       (prevMatchesPlayer1: number) => prevMatchesPlayer1 + count
