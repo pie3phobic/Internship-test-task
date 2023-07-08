@@ -42,9 +42,9 @@ If player takes 1 match, AI will take 3 matches.
 If player takes 2 matches, AI will take 2 matches.
 If player take 3 matches, AI will take 1 match.
 As long as a total of 4 matches are removed each round, the opponent will always be left with the last match.
-If there are less than 5 matches left AI will decide how much to take based on if the amount of matches it has is even or odd and the amount of matches left.
+If there are less than 5 matches left AI will decide how much to take based on whether the amount of matches it has is even or odd and the amount of matches left.
 - The optimal strategy that AI follows for the alternative mode when it goes first:
-AI will always take 2 matches since it's the most benefiting starting position and then it will follow the logic that is described above, making sure that 4 matches are removed on each round.
+AI will always take 2 matches since it's the most benefiting starting position and then it will follow the logic that was described above, making sure that 4 matches are removed on each round.
 - Strategy for the custom game mode:(Nim-sum strategy)
 It calculates the Nim-sum using the XOR operator (^) on the number of matches and the number of matches taken by player. Then, it applies the strategy based on the value of the Nim-sum.
 If the Nim-sum is 0, indicating a losing position, the code selects a random move between 1 and m. If the Nim-sum is non-zero, it proceeds with further calculations. It finds the highest set bit in the Nim-sum using the logarithm and bitwise shifting operations. The value of the highest bit is determined as 1 << highestBit. The code calculates the reduced number of matches by subtracting the highest bit value from the total number of matches.
@@ -58,15 +58,15 @@ Victory:
 Loss:
 ![localhost_3000_game (1)](https://github.com/pie3phobic/Internship-test-task/assets/115817261/56ba0703-471f-4bc7-bd43-1118d889e09c)
 
-This project can be potentially improved because there are still a few areas where further abstraction can be applied to enhance the single responsibility principle and to reduce code coupling.
+This project can be potentially improved because there are still a few areas where further abstraction can be applied to enhance the single responsibility principle and to reduce code coupling. Also, some code duplication can be omitted by refactoring some parts of the code.
 
 Thank you <3
 
 ## Опис:
 Цей проєкт створено з використанням фреймворку для React.JS - Next.JS, TailwindCSS і плагіна HeadlessUI для стилізації деяких компонент інтерфейсу користувача.
 На головний сторінці сайту є 3 кнопки, які відповідають за 3 різні режими гри:
-1. Гравець йде першим;
-2. Альтернативний режим гри - ШІ йде першим;
+1. Гравець ходить першим;
+2. Альтернативний режим гри - ШІ ходить першим;
 3. Спеціальний режим гри - користувач вводить значення `m` і `n` у модальному вікні. У стопці є «2n + 1» сірників, а кількість сірників, дозволених для кожного ходу, становить від 1 до «m». Для цього прикладу максимально дозволене значення `m` становить 9.
 
 Дякую! <3
