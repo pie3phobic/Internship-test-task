@@ -3,6 +3,14 @@
 
 # Demo: https://gameland-omega.vercel.app
 
+## Changes after team's feedback(to be continued :] ):
+1. Reworked AI strategy when the player goes first, the AI should:
+● Always select an odd number of matches (one or three).
+● Maintain the remaining number of matches in the pile such that its remainder when divided by 4 is 0 or 1.
+2. In the case where the AI goes first, it starts by taking one match and then continues following the strategy described above.
+3. Got rid of redundant matchesLeft useState.
+4. Extracted game's logic for original and alternative game modes into custom hooks.
+
 
 ### Description [ Також опис українською доступний внизу :)  ] ->
 
