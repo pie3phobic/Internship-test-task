@@ -8,6 +8,7 @@ export function useGameState() {
   const [player1Turn, setPlayer1Turn] = useState<number>(0);
   const [player2Turn, setPlayer2Turn] = useState<number>(0);
   const [winner, setWinner] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return {
     matchesLeft,
     player,
@@ -22,5 +23,7 @@ export function useGameState() {
     setPlayer2Turn,
     winner,
     setWinner,
+    isOpen,
+    setIsOpen,
   };
 }
